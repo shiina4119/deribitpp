@@ -65,14 +65,18 @@ void print_auth_response(std::string &des) {
 
 void make_place_order_json_message(std::string &method,
                                    std::string &instrument_name, int &amount,
-                                   json &msg) {
-    json ser = {{"jsonrpc", "2.0"},
-                {"id", 2},
-                {"method", "private/" + method},
-                {"params",
-                 {{"instrument_name", instrument_name},
-                  {"amount", amount},
-                  {"type", "market"}}}};
+                                   int &price, json &msg) {
+    json ser = {
+        {"jsonrpc", "2.0"},
+        {"id", 2},
+        {"method", "private/" + method},
+        {"params", {{"instrument_name", instrument_name}, {"type", "market"}}}};
+    if (amount != -1) {
+        ser["params"]["amount"] = amount;
+    }
+    if (price != -1) {
+        ser["params"]["price"] = price;
+    }
     msg = ser;
 }
 
@@ -198,7 +202,7 @@ void print_unsubscribe_all_response(std::string &des) {
 void make_get_orderbook_json_message(json &msg) {
     json ser = {
         {"jsonrpc", "2.0"},
-        {"id", 7},
+        {"id", 8},
         {"method", "public/get_order_book"},
         {"params", {{"instrument_name", "BTC-PERPETUAL"}, {"depth", 5}}}};
     msg = ser;

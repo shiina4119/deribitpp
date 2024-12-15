@@ -34,7 +34,7 @@ void shared_state::process_incoming() {
                 li->get_session()->do_write(message);
             }
         } else {
-            print_response(*message);
+            print_console(*message);
         }
     }
 }

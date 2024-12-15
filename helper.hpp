@@ -13,7 +13,8 @@ void print_error(json &msg, std::string);
 void make_auth_json_message(std::string &, std::string &, json &);
 void print_auth_response(std::string &);
 
-void make_place_order_json_message(std::string &, std::string &, int &, json &);
+void make_place_order_json_message(std::string &, std::string &, int &, int &,
+                                   json &);
 void print_place_order_response(std::string &);
 
 void make_cancel_order_json_message(std::string &, json &);

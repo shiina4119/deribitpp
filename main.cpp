@@ -48,15 +48,19 @@ int main() {
             make_auth_json_message(client_id, client_secret, msg);
             msg_dump = msg.dump();
         } else if (command == "place order") {
-            std::string method, instrument_name;
-            int amount;
+            std::string method, instrument_name, amount_str, price_str;
             fmt::print("Type? (buy/sell): ");
             std::getline(std::cin, method);
             fmt::print("Instrument Name: ");
             std::getline(std::cin, instrument_name);
-            fmt::print("Amount: ", amount);
-            std::cin >> amount;
-            make_place_order_json_message(method, instrument_name, amount, msg);
+            fmt::print("Amount: ", amount_str);
+            std::getline(std::cin, amount_str);
+            fmt::print("Price: ", price_str);
+            std::getline(std::cin, price_str);
+            int amount = (amount_str == "" ? -1 : stoi(amount_str));
+            int price = (price_str == "" ? -1 : stoi(price_str));
+            make_place_order_json_message(method, instrument_name, amount,
+                                          price, msg);
             msg_dump = msg.dump();
         } else if (command == "cancel order") {
             std::string order_id;
