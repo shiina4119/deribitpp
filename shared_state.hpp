@@ -7,6 +7,11 @@
 #include <queue>
 #include <string>
 
+/*
+    The shared_state object will process incoming messages from
+    the Deribit websocket server.
+    It will relay subscription messages to the subscription receiver.
+*/
 class shared_state {
     std::queue<std::shared_ptr<std::string>> incoming_messages;
     std::shared_ptr<listener> li;

@@ -18,6 +18,10 @@ void fail(beast::error_code ec, std::string what) {
     std::cerr << what << ": " << ec.message() << "\n";
 }
 
+/*
+    This subscription receiver has a single purpose of receiving subscription
+    messages relayed from the main process.
+*/
 class receiver_client : public std::enable_shared_from_this<receiver_client> {
     tcp::resolver resolver;
     websocket::stream<beast::tcp_stream> ws;

@@ -222,3 +222,12 @@ void make_get_positions_json_message(std::string &currency, std::string &kind,
     }
     msg = ser;
 }
+
+void make_hello_json_message(json &msg) {
+    json ser = {
+        {"jsonrpc", "2.0"},
+        {"id", 2841},
+        {"method", "public/hello"},
+        {"params", {{"client_name", "Harshad"}, {"client_version", "1.0.2"}}}};
+    msg = ser;
+}

@@ -119,6 +119,9 @@ int main() {
             std::getline(std::cin, kind);
             make_get_positions_json_message(currency, kind, msg);
             msg_dump = msg.dump();
+        } else if (command == "hello") {
+            make_hello_json_message(msg);
+            msg_dump = msg.dump();
         } else if (command == "quit") {
             cl->do_close();
             ss->stop_processing();

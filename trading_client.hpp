@@ -17,6 +17,10 @@ namespace net = boost::asio;
 namespace ssl = boost::asio::ssl;
 using tcp = boost::asio::ip::tcp;
 
+/*
+    A trading_client object is used to maintain a websocket connection
+    with the Deribit websocket server
+*/
 class trading_client : public std::enable_shared_from_this<trading_client> {
     tcp::resolver resolver;
     websocket::stream<beast::ssl_stream<beast::tcp_stream>> ws;

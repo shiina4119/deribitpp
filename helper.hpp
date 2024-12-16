@@ -39,3 +39,5 @@ void print_get_orderbook_response(std::string &);
 
 void make_get_positions_json_message(std::string &, std::string &, json &);
 void print_get_positions_response(std::string &);
+
+void make_hello_json_message(json &);

@@ -12,6 +12,11 @@ namespace beast = boost::beast;
 namespace websocket = beast::websocket;
 using tcp = boost::asio::ip::tcp;
 
+/*
+    A broadcast_session object denotes a websocket connection
+    by a subscription receiver client.
+    It will relay subscription messages to the receiver.
+*/
 class broadcast_session
     : public std::enable_shared_from_this<broadcast_session> {
     websocket::stream<beast::tcp_stream> ws;
@@ -22,8 +27,6 @@ public:
     void run();
     void on_run();
     void on_accept(beast::error_code);
-    void do_read();
-    void on_read(beast::error_code, size_t);
     void do_write(std::shared_ptr<std::string>);
     void on_write(beast::error_code, std::size_t);
     void fail(beast::error_code, std::string);
